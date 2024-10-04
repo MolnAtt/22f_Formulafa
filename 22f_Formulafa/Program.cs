@@ -169,7 +169,7 @@ namespace _22f_Formulafa
 				i++;
 			return (vonat.Substring(honnan, i - honnan), i);
 		}
-		private static bool Atomi_formula(char v) => "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM".Contains(v);
+		private static bool Atomi_formula(char v) => "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCBNM".Contains(v);
 
 
 
