@@ -59,6 +59,14 @@ namespace _22f_Formulafa
 				}
 			}
 
+			public static Dictionary<string, Formula> atomi_formulák = new Dictionary<string, Formula>();
+			public static Formula GetOrCreate(string s) {
+				if (!atomi_formulák.ContainsKey(s))
+					atomi_formulák[s] = new Formula(s);
+				return atomi_formulák[s]; 
+			}
+
+			
 			public static Formula Parse(string formulastring)
 			{
 				Stack<string> input = TolatóUdvar(formulastring);
@@ -67,7 +75,7 @@ namespace _22f_Formulafa
 				foreach (string s in input.Reverse())
 				{
 					if (Atomi_formula(s))
-						formulaverem.Push(new Formula(s)); // nem az igazi... mert cím szerint nem azonosak az ugyanolyan feliratú betűk...
+						formulaverem.Push(Formula.GetOrCreate(s));
 					else
 						switch (s)
 						{
@@ -218,6 +226,7 @@ namespace _22f_Formulafa
 			Console.WriteLine(A);
 			Formula B = Formula.Parse("(((p&q)→-p)↔(s→(-pVq)))");
             Console.WriteLine(B.Diagnosztika()); ;
+            Console.WriteLine($"Összesen ennyi atomi formula van most: {Formula.atomi_formulák.Count}");
 
         }
 	}
